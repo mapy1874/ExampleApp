@@ -19,7 +19,7 @@ class LeakedClass: ObservableObject {
     private func bootstrap() {
         Just(10)
             .combineLatest($counter)
-            .map { counter, value in self.updatedState(counter, value) }
+            .map(updatedState)
             .receive(on: DispatchQueue.main)
             .assign(to: &$state)
     }
